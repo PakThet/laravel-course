@@ -1,0 +1,14 @@
+docker command
+
+- docker compose up -d name-of-container
+- docker images = check all image avaliable
+- docker ps -a = check all container avaliable
+- docker compose build = build the image
+
+- docker compose up --build -d name-of-container
+- docker compose up --build name-of-container
+
+- docker exec -it db psql -U postgres
+\dt
+
+- docker exec laravelapp php artisan migrate
