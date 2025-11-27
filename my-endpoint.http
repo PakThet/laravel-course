@@ -1,0 +1,220 @@
+###
+@token = 2|aKrOcU99eHMYO9i3hi7y2M50DEmHGIlXOmy3xYywf8abe6e4
+###
+
+### Login User
+POST http://127.0.0.1:8000/api/login
+Accept: application/json
+Content-Type: application/json
+
+{
+    "email": "superadmin@example.com",
+    "password": "password"
+}
+
+### Logout User
+POST http://127.0.0.1:8000/api/logout
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Get Current User
+GET http://127.0.0.1:8000/api/me
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Get All Users
+GET http://127.0.0.1:8000/api/users
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Get Single User
+GET http://127.0.0.1:8000/api/users/2
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Create User
+POST http://127.0.0.1:8000/api/users
+Authorization: Bearer {{token}}
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "Eample User",
+    "email": "devit@example.com",
+    "password": "password",
+    "password_confirmation": "password"
+}
+
+### Update User
+PUT http://127.0.0.1:8000/api/users/2
+Authorization: Bearer {{token}}
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "John Updated",
+    "email": "johnupdated@example.com",
+    "password": "newpassword",
+    "password_confirmation": "newpassword",
+    "roles": ["admin"]
+}
+
+### Delete User
+DELETE http://127.0.0.1:8000/api/users/3
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Toggle User Status
+PATCH http://127.0.0.1:8000/api/users/2/toggle-status
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### GET Profile
+GET http://127.0.0.1:8000/api/users/profile
+Authorization: Bearer {{token}}
+Accept: application/json
+Content-Type: application/json
+
+### Update Profile
+PATCH http://127.0.0.1:8000/api/users/profile
+Authorization: Bearer {{token}}
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "Pak Thet"
+}
+
+### Change Password
+PUT http://127.0.0.1:8000/api/users/change-password
+Authorization: Bearer {{token}}
+Accept: application/json
+Content-Type: application/json
+
+{
+    "current_password": "password",
+    "password": "pakthet1303",
+    "password_confirmation": "pakthet1303"
+}
+
+### Get Roles List
+GET http://127.0.0.1:8000/api/users/2/roles
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Get All Roles
+GET http://127.0.0.1:8000/api/roles
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Get Single Role
+GET http://127.0.0.1:8000/api/roles/4
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Create Role
+POST http://127.0.0.1:8000/api/roles
+Authorization: Bearer {{token}}
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "Manager",
+    "permissions": ["view_users", "edit_users", "create_users"]
+}
+
+### Update Role
+PUT http://127.0.0.1:8000/api/roles/4
+Authorization: Bearer {{token}}
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "senior manager",
+    "permissions": ["view_users", "edit_users", "delete_users"]
+}
+
+### Delete Role
+DELETE http://127.0.0.1:8000/api/roles/{id}
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Assign Permissions to Role
+POST http://127.0.0.1:8000/api/roles/4/assign-permissions
+Authorization: Bearer {{token}}
+Accept: application/json
+Content-Type: application/json
+
+{
+    "permissions": ["create_users", "delete_users"]
+}
+
+### Revoke Permissions from Role
+POST http://127.0.0.1:8000/api/roles/{id}/revoke-permissions
+Authorization: Bearer {{token}}
+Accept: application/json
+Content-Type: application/json
+
+{
+    "permissions": ["view_users"]
+}
+
+### Get All Permissions
+GET http://127.0.0.1:8000/api/permissions
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Get Single Permission
+GET http://127.0.0.1:8000/api/permissions/{id}
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Create Permission
+POST http://127.0.0.1:8000/api/permissions
+Authorization: Bearer {{token}}
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "edit_articles"
+}
+
+### Update Permission
+PUT http://127.0.0.1:8000/api/permissions/{id}
+Authorization: Bearer {{token}}
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "edit_all_articles"
+}
+
+### Delete Permission
+DELETE http://127.0.0.1:8000/api/permissions/{id}
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Assign Roles to User
+POST http://127.0.0.1:8000/api/users/4/assign-roles
+Authorization: Bearer {{token}}
+Accept: application/json
+Content-Type: application/json
+
+{
+    "roles": ["admin", "senior manager"]
+}
+
+### Revoke Roles from User
+POST http://127.0.0.1:8000/api/users/{id}/revoke-roles
+Authorization: Bearer {{token}}
+Accept: application/json
+Content-Type: application/json
+
+{
+    "roles": ["user"]
+}
+
+### Get User Roles and Permissions
+GET http://127.0.0.1:8000/api/users/{id}/roles-permissions
+Authorization: Bearer {{token}}
+Accept: application/json

@@ -1,0 +1,15 @@
+First we need to install Library
+    composer require spatie/laravel-permission
+    php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+Run migration
+    php artisan migrate
+    
+Make Reuqest
+    php artisan make:request RequestName
+
+Make Middleware
+
+    php artisan make:middleware PermissionMiddleware
+enable config 
+    php artisan config:publish --all
+
