@@ -4,8 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Address;
 use App\Models\Customer;
-use App\Models\Product;
-use App\Models\Review;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -57,18 +55,8 @@ class CustomerSeeder extends Seeder
                 ]);
             }
 
-            // Create 0-3 reviews per customer
-            $reviewCount = rand(0, 3);
-            for ($j = 0; $j < $reviewCount; $j++) {
-                Review::factory()->create([
-                    'customer_id' => $customer->id,
-                    'product_id' => Product::inRandomOrder()->first()->id,
-                ]);
-            }
-
             $bar->advance();
         }
-
 
         $bar->finish();
         $this->command->newLine();
